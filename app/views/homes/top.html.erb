@@ -1,1 +1,52 @@
-<h1>Topページ</h1>
+<!--一段段落を設ける-->
+<p id="notice"></p>
+
+<!--main全体のコンテナ-->
+<div class="container">
+  <!--列の挿入-->
+  <div class="row">
+    <!--mx-autoで中央寄せ、以下は画面幅によって１２分割のうちに占める割合を指定-->
+    <div class="mx-auto col-11 col-sm-10 col-lg-8 col-xl-6">
+      
+      <h1>welcome to
+      <!--Font Awesomeの挿入-->
+      <i class="fa-solid fa-book"></i>
+      <strong>Bookers</strong>
+      !! 
+      </h1>
+
+      <p>In 
+      <!--Font Awesomeの挿入-->
+       <i class="fa-solid fa-book"></i>
+      <strong>Bookers</strong>
+      ,
+      </p>
+
+      <p>you can share and exchange  your opinions , inpressions , and emotions</p>
+
+      <p>about various books!</p> 
+      
+      <!--Log inボタンの実装-->
+      <!--btn-wrapperは、包含するボタン要素を一括りにする-->
+      <div class="btn-wrapper col-10 mx-auto">
+      <div class="row">
+    
+        <%= link_to "Log in", new_user_session_path, class: "btn btn-info btn-sm btn-block mb-3 " %>
+      
+      </div>
+      
+      <div class="row">
+      
+        <%= link_to "Sign up", new_user_registration_path, class: "btn btn-success btn-sm btn-block"  %>
+      
+      </div>
+      </div>
+      
+    </div> 
+  </div>
+</div>　
+
+
+
+    
+    
