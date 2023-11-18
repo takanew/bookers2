@@ -12,8 +12,11 @@
 <h2>introduction</h2>
 <p><%= @user.introduction %></p>
 
-<%= link_to edit_user_path(@user.id), class: "btn btn-danger" do %>
-<i class="fa-solid fa-user-gear"></i>
+<!--linkに FontAwesomeを適用させたもの-->
+<!--btn：ボタンのスタイル　btn-outline-secondary:ボタンの境界線のみが表示される、セカンダリカラーのスタイルを適用するためのクラス-->
+<!--btn-block:ボタンを水平方向いっぱいに広げるやつ-->
+<%= link_to edit_user_path(@user.id), class: "btn btn-outline-secondary btn-block" do %>
+<i class="fa-solid fa-user-gear bg-transparent"></i>
 <% end %>
 
  <!--上記 useのeditアクション、userのedit.html.erbは未編集　17日-->
@@ -26,11 +29,53 @@
 
   <h4>Opinion</h4>
   <%= f.text_area :body %>
-
-  <%= f.submit '投稿' %>
+  <br>
+  <!--class: 'btn'でbootstrapのボタンを定義、以下にバックグラウンドカラー、字の色を設定-->
+  <%= f.submit 'Create Book', class: 'btn', style: 'background-color: #28a745; color: white' %>
 <% end %>
 
 <!--books投稿一覧-->
+<h1>Books</h1>
+
+<!--tableの作成-->
+<table>
+  <!--thead 水平方向グループ化　ヘッダー作成-->
+  <thead>
+    <!--tr 行を指定-->
+    <tr>
+      <!--th 列を指定　ヘッダーは４列指定-->
+      <th></th>
+      <th>Title</th>
+      <th>Opinion</th>
+      <th></th>
+      <!--４行目に設定　colspan="3"は左の２つを含んで３つ分包含するイメージ？　メンター質問行う。-->
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+  <!--eachメソッドで@book(Book.all)の各レコードをbookに代入し、繰り返し表示-->
+  <% @books.each do |book| %>
+   <tr>
+    <!--投稿ユーザーのプロフィールイメージ-->
+    <td>
+     <%= image_tag(book.user.profile_image) %>
+    </td>
+    <!--Bookモデルのタイトルカラム」-->
+    <td>
+　　　<%= link_to book.title, book_path(book) %>
+    </td>
+    <!--Bookモデルのbodyカラム-->
+    <td>
+    <%= book.body %>
+    </td>
+   </tr>
+  <%end%>
+  </tbody>
+
+</table>
 
 
+<!--やること-->
+<!--editボタンの編集、linkの追加-->
 

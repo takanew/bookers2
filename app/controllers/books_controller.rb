@@ -5,8 +5,10 @@ class BooksController < ApplicationController
   def index
     # 新規投稿フォーム用インスタンス
     @book = Book.new
-    
+    # メモ：下記のように、current_userを指定することで、Userモデルのcurrent_user情報を持ってこれる。
     @user = current_user
+    # 投稿一覧データの取得
+    @books = Book.all
   end
 
   def create
@@ -29,3 +31,9 @@ class BooksController < ApplicationController
   def destroy
   end
 end
+
+ private
+  # ストロングパラメータ
+  def book_params
+    params.require(:book).permit(:title, :body)
+  end

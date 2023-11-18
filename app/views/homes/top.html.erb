@@ -30,7 +30,7 @@
       <!--btn-wrapperは、包含するボタン要素を一括りにする-->
       <div class="btn-wrapper col-10 mx-auto">
       <div class="row">
-    
+    　
         <%= link_to "Log in", new_user_session_path, class: "btn btn-info btn-sm btn-block mb-3 " %>
       
       </div>
@@ -45,6 +45,10 @@
     </div> 
   </div>
 </div>　
+
+<!--メモ-->
+<!--ボタンが拡大しなかった原因は、linkをli要素で囲んでしまったことが考えられる。-->
+<!--上記により、rowの子要素ではなく、liの小要素になってしまい、li要素の横幅にlinkが依存してしまった。-->
 
 
 
