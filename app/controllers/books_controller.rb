@@ -1,5 +1,9 @@
 class BooksController < ApplicationController
   def show
+    # 一意のidを持つbookモデルのレコードを抽出
+    @book_show = Book.find(params[:id])
+    # 新規投稿フォーム用インスタンス
+    @book = Book.new
   end
 
   def index

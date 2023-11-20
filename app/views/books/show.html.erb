@@ -1,2 +1,49 @@
-<h1>Books#show</h1>
-<p>Find me in app/views/books/show.html.erb</p>
+<!--User info-->
+<h1>User info</h1>
+
+<!--@book_showのuser_idカラムを持つuserのprofile_imageを表示-->
+<%= image_tag @book_show.user.profile_image %>
+
+<p>name<p>
+<%= @book_show.user.name %>
+
+<p>introduction</p>
+<%= @book_show.user.introduction %>
+
+
+<!--新規投稿 indexからコピーしたもの-->
+<h1>New book</h1>
+<%= form_with model: @book do |f| %>
+  <h4>Title</h4>
+  <%= f.text_field :title %>
+
+  <h4>Opinion</h4>
+  <%= f.text_area :body %>
+  <br>
+  <!--class: 'btn'でbootstrapのボタンを定義、以下にバックグラウンドカラー、字の色を設定-->
+  <%= f.submit 'Create Book', class: 'btn', style: 'background-color: #28a745; color: white' %>
+<% end %>
+
+<!--bookの詳細-->
+  <!--image_tagで（）内の画像を表示させ、link_toでその画像をリンクにする。-->
+  <%= link_to image_tag(@book_show.user.profile_image), user_path(@book_show.user) %>
+  
+  <!--profile_image下に、nameカラムの表示、userの詳細ページにリンク作成-->
+  <%= link_to @book_show.user.name, user_path(@book_show.user) %>
+  <!--抽出したbookレコードのタイトルカラム表示、同一ページにリンク-->
+  <%= link_to @book_show.title, book_path(@book_show) %>
+      
+  <%= @book_show.body %>
+  
+  <!--もし、book_showの持つuser_idがcurrent_userと合致したら、if以下を実行-->
+  <% if @book_show.user_id == current_user.id %>
+  <%= link_to "edit", edit_book_path(@book_show), class: "btn btn-success" %>
+  <% end %>
+  
+  <% if @book_show.user_id == current_user.id %>
+  <!--link to_ヘルパーメソッドの作る要素内で、data: { confirm: }属性を使用し、確認メッセージを表示--->
+  <!--link to_は、ruby on railsで使用するHTMLのa要素を作るヘルパーメソッド-->
+  <%= link_to "delite", book_path(@book_show), method: :delete, data: { confirm: '削除しますか？' }, class: "btn btn-danger" %>
+  <% end %>
+  
+

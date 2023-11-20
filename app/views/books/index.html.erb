@@ -2,7 +2,6 @@
 
 <h1>User info</h1>
 
- <p>画像</p>
  <!--@user= current_user-->
 <%= image_tag @user.get_profile_image(100,100) %>
 
@@ -15,11 +14,11 @@
 <!--linkに FontAwesomeを適用させたもの-->
 <!--btn：ボタンのスタイル　btn-outline-secondary:ボタンの境界線のみが表示される、セカンダリカラーのスタイルを適用するためのクラス-->
 <!--btn-block:ボタンを水平方向いっぱいに広げるやつ-->
+<!--bootstrapでサイズを調整-->
 <%= link_to edit_user_path(@user.id), class: "btn btn-outline-secondary btn-block" do %>
 <i class="fa-solid fa-user-gear bg-transparent"></i>
 <% end %>
 
- <!--上記 useのeditアクション、userのedit.html.erbは未編集　17日-->
 
 <!--新規投稿-->
 <h1>New book</h1>
@@ -63,7 +62,7 @@
     </td>
     <!--Bookモデルのタイトルカラム」-->
     <td>
-　　　<%= link_to book.title, book_path(book) %>
+    <%= link_to book.title, book_path(book) %>
     </td>
     <!--Bookモデルのbodyカラム-->
     <td>
@@ -77,5 +76,5 @@
 
 
 <!--やること-->
-<!--editボタンの編集、linkの追加-->
+<!--editボタンの編集-->
 
