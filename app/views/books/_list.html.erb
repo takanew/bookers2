@@ -1,0 +1,23 @@
+<h1>User info</h1>
+<%= image_tag user.get_profile_image(100,100) %>
+
+<h2>name</h2>
+<p><%= user.name %></p>
+
+<h2>introduction</h2>
+<p><%= user.introduction %></p>
+
+<!--currentがuser(呼び出される際の変数)だったら-->
+<!--linkに FontAwesomeを適用させたもの-->
+<!--btn：ボタンのスタイル　btn-outline-secondary:ボタンの境界線のみが表示される、セカンダリカラーのスタイルを適用するためのクラス-->
+<!--btn-block:ボタンを水平方向いっぱいに広げるやつ-->
+<!--bootstrapでサイズを調整-->
+<% if current_user == user %>
+  <%= link_to edit_user_path(current_user), class: "btn btn-outline-secondary btn-block" do %>
+      <i class="fa-solid fa-user-gear bg-transparent"></i>
+  <% end %>
+<% else %>
+  <%= link_to user_path(current_user), class: "btn btn-outline-secondary btn-block" do %>
+    <i class="fa-solid fa-user-gear bg-transparent"></i>
+  <% end %>
+<% end %>

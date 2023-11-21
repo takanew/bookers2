@@ -1,0 +1,32 @@
+<!--User info-->
+<%= render 'books/list', user: current_user %>
+
+<!--新規投稿画面-->
+<%= render 'books/new', book: @book %>
+
+<!--user一覧画面-->
+<table class="table">
+  <thead>
+    <tr>
+      <th>image</th>
+      <th>name</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+          <!--多分画像はメソッドから呼び出したほうがいい-->
+        <td><%= image_tag user.get_profile_image(100,100) %></td>
+        <td><%= user.name %></td>
+        <td><%= link_to "Show", user_path(user) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
+ 
+
+
+
