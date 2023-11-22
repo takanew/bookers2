@@ -6,9 +6,11 @@ def after_sign_out_path_for(resource_or_scope)
 end
 
 protected
+# 【Rails】この記事を「devise 名前 ログイン」で調べたあなたへ贈るに要件の定義の仕方書いてある
+# config/initializers/devise.rbでデフォルトのemailからnameに変更したので、emailを認証のキーにするためにここで再定義を行う
 
   def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:name])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:email])
   end
 
 end
