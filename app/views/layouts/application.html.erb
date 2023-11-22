@@ -5,43 +5,97 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-    
+
     <!--Font Awesomeの導入-->
     <script src="https://kit.fontawesome.com/871dbee36e.js" crossorigin="anonymous"></script>
-    
+
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
     <header>
-    <% if user_signed_in? %>
-    　<li>
-        <%= link_to "Home", root_path %>
-      </li>
+    <!--headerの中のnavigation-->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <!--containerを作成-->
+    <div class="container">
+    <!--左上のbookを表示、ルートパス-->
+    <a class="navbar-brand" href="/"><span>Bookers</span></a>
+    <!--button`要素が作成されており、`navbar-toggler`というクラスが適用。これにより、Bootstrapのデフォルトのスタイリングや動作が適用される。-->
+    <!--`type="button"`: ボタンのタイプを指定しています。
+     data-toggle="collapse"`: ナビゲーションバーのコンポーネントをトグル（表示/非表示）できるようにするための属性です。
+    `data-target="#navbarNavDropdown"`: トグルの対象となる要素（この場合、idが"navbarNavDropdown"の要素）を指定しています。
+     aria-controls="navbarNavDropdown"`: トグルの対象となる要素のidを示す属性です。
+    `aria-expanded="false"`: トグルの対象となる要素が展開されていないことを示す属性です。
+    `aria-label="Toggle navigation"`: トグルボタンの目的（ナビゲーションの表示/非表示を切り替えること）を説明するテキストを指定しています。
+     また、`button`要素の中には、`navbar-toggler-icon`というクラスが適用された`span`要素があります。これにより、トグルボタンのアイコンが表示されます。-->
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+    <ul class="navbar-nav ml-auto">
+       <% if user_signed_in? %>
+       <!--FontAwesomeを絡めた時の書き方-->
+       <!--Font Awsomeのバージョン注意-->
       <li>
-        <%= link_to "Users", users_path %>
+        <!--`nav-link`クラス: ナビゲーションリンク（通常は`<a>`タグ）に適用されるクラスです。このクラスは、Bootstrapなどのフレームワークで定義されているものであり、ナビゲーションメニュー内のリンク要素をスタイリングするために使用される-->
+        <!--`text-light`クラス: テキストの色を明るい色（通常は白色）にするためのクラス-->
+        <!--railsでclassを指定するときは：-->
+        <%= link_to user_path(current_user), class:"nav-link text-light" do %>
+        <!--FontAwesomeの挿入-->
+        <i class="fa fa-house"></i>Home
+        <%end%>
       </li>
+
       <li>
-        <%= link_to "Books ", books_path %>
+        <%= link_to users_path, class:"nav-link text-light" do %>
+        <i class="fa fa-users"></i>Users
+        <%end%>
       </li>
+
       <li>
-        <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+        <%= link_to books_path, class:"nav-link text-light" do %>
+        <i class="fa fa-book-open"></i>books
+        <%end%>
       </li>
+
+      <li>
+        <%= link_to destroy_user_session_path, method: :delete, class:"nav-link text-light" do  %>
+        <i class="fa fa-right-from-bracket"></i>Log out
+        <%end%>
+      </li>
+
     <% else %>
+
       <li>
-        <%= link_to "Home", root_path %>
+        <%= link_to root_path, class:"nav-link text-light" do %>
+        <i class="fa fa-house"></i>Home
+        <%end%>
       </li>
+
       <li>
-        <%= link_to "About", "/home/about" %>
+        <%= link_to about_path, class:"nav-link text-light" do %>
+        <i class="fa fa-link"></i>About
+        <%end%>
       </li>
+
       <li>
-        <%= link_to "Sign up", new_user_registration_path %>
+        <%= link_to new_user_registration_path, class:"nav-link text-light" do %>
+        <i class="fa fa-user-plus"></i>Sign up
+        <%end%>
       </li>
+
       <li>
-        <%= link_to "Log in", new_user_session_path %>
+        <%= link_to new_user_session_path, class:"nav-link text-light" do %>
+        <i class="fa fa-right-to-bracket"></i>Log in
+        <%end%>
       </li>
+
     <% end %>
+    </ul>
+    </div>
+    </div>
+    </nav>
   </header>
 
   <main>
@@ -51,6 +105,7 @@
   <footer>
     <div class="container mt-5">
       <div class="row">
+        <!--rowの中で中央揃え-->
         <div class="mx-auto">
           <p>CopyRight Infratop.inc</p>
         </div>
