@@ -8,11 +8,13 @@
 
           <div class="form-group">
             <%= f.label :title %>
+            <br>
             <%= f.text_field :title %>
           </div>
 
           <div class="form-group">
-            <%= f.label :body %>
+            <%= f.label :Opinion %>
+            <br>
             <%= f.text_area :body %>
           </div>
 
@@ -23,3 +25,6 @@
 
         <%= link_to "Show", book_path(@book) %> |
         <%= link_to "Back", books_path %>
+      </div>
+   </div>
+</div>

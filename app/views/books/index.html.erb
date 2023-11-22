@@ -1,3 +1,8 @@
+<p id="notice"></p>
+<div class="container px-5 px-sm-0">
+<div class="row">
+    
+  <div class="col-md-3">  
 <!--User info-->
 <!--部分テンプレートを適用、テンプレート保存先は_list.html.erb-->
 <!--部分テンプレートは以下の記述で呼び出す、_listの_は省略可能、books/list.html.erbが通常の呼び方だが、拡張子は省略でき、同じフォルダ内から呼び出す場合はフォルダ名も省略できる-->
@@ -5,12 +10,15 @@
 
 <!--新規投稿-->
 <%= render 'new', book: @book %>
+
+  </div>
   
 <!--books投稿一覧-->
+<div class="col-md-8 offset-md-1">
 <h1>Books</h1>
 
 <!--tableの作成-->
-<table>
+<table class="table table-hover table-inverse">
   <!--thead 水平方向グループ化　ヘッダー作成-->
   <thead>
     <!--tr 行を指定-->
@@ -19,7 +27,6 @@
       <th></th>
       <th>Title</th>
       <th>Opinion</th>
-      <th></th>
       <!--４行目に設定　colspan="3"は左の２つを含んで３つ分包含するイメージ？　メンター質問行う。-->
       <th colspan="3"></th>
     </tr>
@@ -47,6 +54,10 @@
 
 </table>
 
+ </div>
+ 
+</div>
+</div>
 
 <!--やること-->
 <!--editボタンの編集-->

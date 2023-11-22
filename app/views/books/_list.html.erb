@@ -1,17 +1,35 @@
-<h1>User info</h1>
+<!--User info-->
+<h2>User info</h2>
 <%= image_tag user.get_profile_image(100,100) %>
 
-<h2>name</h2>
-<p><%= user.name %></p>
+<table class="table">
+  <tbody>
+    <tr></tr>
+    
+    <tr> 
+    <th>name</th>
+    <th><%= user.name %></th>
+    </tr> 
 
-<h2>introduction</h2>
-<p><%= user.introduction %></p>
+    <tr>
+    <th>introduction</th>
+    <th><%= user.introduction %></th>
+    </tr>
+  </tbody>
+</table>
+
+<!--ここまでUser infoのinstructionまで-->
+
+
+
+<!--ここから編集ボタン-->
 
 <!--currentがuser(呼び出される際の変数)だったら-->
 <!--linkに FontAwesomeを適用させたもの-->
 <!--btn：ボタンのスタイル　btn-outline-secondary:ボタンの境界線のみが表示される、セカンダリカラーのスタイルを適用するためのクラス-->
 <!--btn-block:ボタンを水平方向いっぱいに広げるやつ-->
 <!--bootstrapでサイズを調整-->
+<div class="row">
 <% if current_user == user %>
   <%= link_to edit_user_path(current_user), class: "btn btn-outline-secondary btn-block" do %>
       <i class="fa-solid fa-user-gear bg-transparent"></i>
@@ -21,3 +39,6 @@
     <i class="fa-solid fa-user-gear bg-transparent"></i>
   <% end %>
 <% end %>
+</div>
+
+<!--ここまで編集ボタン-->

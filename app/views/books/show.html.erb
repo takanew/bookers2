@@ -1,3 +1,8 @@
+<p id="notice"></p>
+<div class="container">
+<div class="row">
+  
+  <div class="col-md-3">
 <!--User info-->
 <!--@book_showのuser_idカラムを持つuserのprofile_imageを表示-->
 <%= render 'list', user: @book_show.user %>
@@ -5,8 +10,12 @@
 <!--新規投稿 -->
 <%= render 'new', book: @book %>
 
+  </div>
+
 <!--bookの詳細-->
-<table>
+<div class="col-md-8 offset-md-1">
+  <h2>Book detail</h2>
+<table class="table">
   <tbody>
     <tr>
       <td>
@@ -29,7 +38,7 @@
        <td>
       <!--もし、book_showの持つuser_idがcurrent_userと合致したら、if以下を実行-->
       <% if @book_show.user_id == current_user.id %>
-      <%= link_to "edit", edit_book_path(@book_show), class: "btn btn-success" %>
+      <%= link_to "Edit", edit_book_path(@book_show), class: "btn btn-success" %>
       <% end %>
        </td>
 
@@ -37,12 +46,16 @@
       <% if @book_show.user_id == current_user.id %>
       <!--link to_ヘルパーメソッドの作る要素内で、data: { confirm: }属性を使用し、確認メッセージを表示--->
       <!--link to_は、ruby on railsで使用するHTMLのa要素を作るヘルパーメソッド-->
-      <%= link_to "delite", book_path(@book_show), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-danger" %>
+      <%= link_to "Destroy", book_path(@book_show), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-danger" %>
       <% end %>
       </td>
-
     </tr>
   </tbody>
 </table>
+</div>
+
+
+</div>
+</div>
 
 
