@@ -31,15 +31,10 @@
 <!--btn-block:ボタンを水平方向いっぱいに広げるやつ-->
 <!--bootstrapでサイズを調整-->
 <div class="row">
-<% if current_user == user %>
-  <%= link_to edit_user_path(current_user), class: "btn btn-outline-secondary btn-block" do %>
+  <%= link_to edit_user_path(user), class: "btn btn-outline-secondary btn-block" do %>
       <i class="fa-solid fa-user-gear bg-transparent"></i>
   <% end %>
-<% else %>
-  <%= link_to user_path(current_user), class: "btn btn-outline-secondary btn-block" do %>
-    <i class="fa-solid fa-user-gear bg-transparent"></i>
-  <% end %>
-<% end %>
+  
 </div>
 
 <!--ここまで編集ボタン-->

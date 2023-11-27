@@ -43,25 +43,25 @@
         <!--railsでclassを指定するときは：-->
         <%= link_to user_path(current_user), class:"nav-link text-light" do %>
         <!--FontAwesomeの挿入-->
-        <i class="fa fa-house"></i>Home
+        <i class="fa-solid fa-house"></i>Home
         <%end%>
       </li>
 
       <li>
         <%= link_to users_path, class:"nav-link text-light" do %>
-        <i class="fa fa-users"></i>Users
+        <i class="fa-solid fa-users"></i>Users
         <%end%>
       </li>
 
       <li>
         <%= link_to books_path, class:"nav-link text-light" do %>
-        <i class="fa fa-book-open"></i>books
+        <i class="fa-solid fa-book-open"></i>Books
         <%end%>
       </li>
 
       <li>
         <%= link_to destroy_user_session_path, method: :delete, class:"nav-link text-light" do  %>
-        <i class="fa fa-right-from-bracket"></i>Log out
+        <i class="fa-solid fa-right-from-bracket"></i>Log out
         <%end%>
       </li>
 
@@ -69,25 +69,25 @@
 
       <li>
         <%= link_to root_path, class:"nav-link text-light" do %>
-        <i class="fa fa-house"></i>Home
+        <i class="fa-solid fa-house"></i>Home
         <%end%>
       </li>
 
       <li>
         <%= link_to about_path, class:"nav-link text-light" do %>
-        <i class="fa fa-link"></i>About
+        <i class="fa-solid fa-link"></i>About
         <%end%>
       </li>
 
       <li>
         <%= link_to new_user_registration_path, class:"nav-link text-light" do %>
-        <i class="fa fa-user-plus"></i>Sign up
+        <i class="fa-solid fa-user-plus"></i>Sign up
         <%end%>
       </li>
 
       <li>
         <%= link_to new_user_session_path, class:"nav-link text-light" do %>
-        <i class="fa fa-right-to-bracket"></i>Log in
+        <i class="fa-solid fa-right-to-bracket"></i>Log in
         <%end%>
       </li>
 
@@ -104,10 +104,10 @@
   <%= flash[:notice] %>
   <% elsif flash[:error] %>
   <%= flash[:error] %>
-  
-  
+
+
   <% end %>
-  
+
     <%= yield %>
   </main>
 
