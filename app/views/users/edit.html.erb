@@ -8,6 +8,15 @@
       <!--User info-->
       <h2>User info</h2>
       
+      <div id="error_explanation">
+      <% if @user.errors.any? %>
+      <h3>1 error prohibited this obj from being saved:</h3>
+      <ul>
+      <li>Name is too short (minimum is 2 characters)</li>
+      </ul>
+      <% end %>
+      </div>
+      
       <!--form_with`メソッドは`@user`オブジェクトのクラスに基づいて、`edit`アクションである場合は`update`アクションを呼び出すURLを自動的に生成-->
       <%= form_with model: @user do |f| %>
         <div class="form-group">

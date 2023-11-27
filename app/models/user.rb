@@ -3,6 +3,8 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+         
+  validates :name, presence: true, length: { minimum: 2, message: "is too short (minimum is 2 characters)" }
   
   #ActiveStroageの適用　userのプロフィール画像
   has_one_attached :profile_image

@@ -99,6 +99,15 @@
   </header>
 
   <main>
+  <!--devise`と`bootstrap`が導入されている場合、`devise`はユーザー認証に関連するアクション（例：ログイン、ログアウト）を処理し、必要なフラッシュメッセージを自動的に設定します。そして、`bootstrap`はそれらのフラッシュメッセージをスタイリングして表示します。-->
+  <% if flash[:notice] %>
+  <%= flash[:notice] %>
+  <% elsif flash[:error] %>
+  <%= flash[:error] %>
+  
+  
+  <% end %>
+  
     <%= yield %>
   </main>
 

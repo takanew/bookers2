@@ -1,4 +1,20 @@
 <p id="notice"></p>
+
+<div id="error_explanation">
+<% if @book.errors.any? %>
+  <% if @book.errors.count == 1 %>
+    <h3><%= @book.errors.count %> error prohibited this obj from being saved:</h3>
+  <% else %>
+    <h3><%= @book.errors.count %> errors prohibited this obj from being saved:</h3>
+  <% end %>
+  <ul>
+    <% @book.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
+</div>
+
 <div class="container px-5 px-sm-0">
 <div class="row">
     

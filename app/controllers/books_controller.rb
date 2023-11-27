@@ -1,4 +1,6 @@
 class BooksController < ApplicationController
+   before_action :is_matching_login_user, only: [:edit, :update]
+  
   def show
     # 一意のidを持つbookモデルのレコードを抽出
     @book_show = Book.find(params[:id])
@@ -21,9 +23,15 @@ class BooksController < ApplicationController
     # use_idカラムにcurrent_user.idを代入
     @book.user_id = current_user.id
     # データをデータベースに保存するためのsaveメソッド実行
-    @book.save
+    if @book.save
     # 詳細画面へリダイレクト
+    flash[:notice] = "You have created book successfully."
     redirect_to book_path(@book)
+    else
+    @user = current_user
+    @books = Book.all
+    render :index
+    end
   end
 
   def edit
@@ -35,7 +43,8 @@ class BooksController < ApplicationController
     @book = Book.find(params[:id])
 
     if @book.update(book_params)
-      redirect_to book_path(@book), notice: "Book was successfully updated."
+      flash[:notice] = "You have updated book successfully."
+      redirect_to book_path(@book)
     else
       render :edit
     end
@@ -53,3 +62,10 @@ end
   def book_params
     params.require(:book).permit(:title, :body)
   end
+  
+ def is_matching_login_user
+  @book = Book.find(params[:id])
+  unless @book.user_id == current_user.id
+    redirect_to books_path
+  end
+ end
